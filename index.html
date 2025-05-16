@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Error Dokumentatsiyasi</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <h1>JavaScript <code>Error</code> Ob’ekti</h1>
+
+    <h2>Kirish</h2>
+    <p><code>Error</code> ob’ekti JavaScript'da xatoliklarni ifodalaydi. Bu ob’ekt yordamida xatoliklar tashlanadi
+        (<code>throw</code>) va tutib olinadi (<code>try/catch</code>).</p>
+
+    <h2>Sintaksis</h2>
+    <pre><code>new Error([xabar])</code></pre>
+
+    <h2>Asosiy Error turlari</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Xatolik Turi</th>
+                <th>Tavsifi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>Error</code></td>
+                <td>Umumiy xatolik</td>
+            </tr>
+            <tr>
+                <td><code>ReferenceError</code></td>
+                <td>Mavjud bo‘lmagan o‘zgaruvchiga murojaat</td>
+            </tr>
+            <tr>
+                <td><code>TypeError</code></td>
+                <td>Noto‘g‘ri tipdagi qiymat bilan ish</td>
+            </tr>
+            <tr>
+                <td><code>SyntaxError</code></td>
+                <td>Sintaksisda xatolik</td>
+            </tr>
+            <tr>
+                <td><code>RangeError</code></td>
+                <td>Qiymat oraliqdan tashqarida</td>
+            </tr>
+            <tr>
+                <td><code>URIError</code></td>
+                <td>Noto‘g‘ri URI ishlatilgan</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Misollar</h2>
+
+    <h3>1. Oddiy Error tashlash</h3>
+    <pre><code>function divide(a, b) {
+  if (b === 0) {
+    throw new Error("0 ga bo‘lish mumkin emas");
+  }
+  return a / b;
+}</code></pre>
+
+    <h3>2. try/catch bilan tutish</h3>
+    <pre><code>try {
+  divide(10, 0);
+} catch (err) {
+  console.error("Xatolik:", err.message);
+}</code></pre>
+
+    <h3>3. Maxsus xatolik</h3>
+    <pre><code>class CustomError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "CustomError";
+  }
+}
+
+throw new CustomError("Bu maxsus xatolik");</code></pre>
+
+    <h3>4. Stack trace ko‘rish</h3>
+    <pre><code>try {
+  throw new Error("Xatolik yuz berdi");
+} catch (err) {
+  console.log(err.stack);
+}</code></pre>
+</body>
+
+</html>
