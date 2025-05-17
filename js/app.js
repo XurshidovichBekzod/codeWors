@@ -62,23 +62,11 @@
 }
 
 {
-    //Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers. 0 is neither positive nor negative.
     //7
-    function countPositivesSumNegatives(input) {
-        if (!input || input.length === 0) return [];
-
-        let countPositives = 0;
-        let sumNegatives = 0;
-
-        for (let num of input) {
-            if (num > 0) {
-                countPositives++;
-            } else if (num < 0) {
-                sumNegatives += num;
-            }
-        }
-
-        return [countPositives, sumNegatives];
+    function squareDigits(n) {
+        return +n.toString().split("").map(i => i ** 2).join("")
     }
+
+    console.log(squareDigits(9119));
 }
 
